@@ -1,3 +1,6 @@
+// Importing files
+import { cart } from "../data/cart.js";
+
 // Saving The Data. (Getting products Array from products.js)
 
 // GENERATING THE HTML
