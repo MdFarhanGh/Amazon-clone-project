@@ -45,7 +45,7 @@ products.forEach((product) => {
 
       <div class="product-spacer"></div>
 
-      <div class="added-to-cart ">
+      <div class="added-to-cart js-added-to-cart-${product.id}">
         <img src="images/icons/checkmark.png">
         Added
       </div>
@@ -64,6 +64,9 @@ document.querySelector('.js-product-grid')
 
 
 // MAKING THE PAGE INTERACTIVE.
+
+// Creating setTimeout object. coz to store id for multiple products.
+const addedMsgTimeouts = {};
 
 // Making the add-to-cart button interactive.
 document.querySelectorAll('.js-add-to-cart')
@@ -100,5 +103,19 @@ document.querySelectorAll('.js-add-to-cart')
       });
       document.querySelector('.js-cart-quantity')
         .innerHTML = cartQuantity;
+
+      // Displaying the 'added' message on the page.
+      const addedMsg = document.querySelector(`.js-added-to-cart-${productId}`);
+      addedMsg.classList.add('js-added-to-cart-opacity');
+
+      const previousTimeoutId = addedMsgTimeouts[productId];
+      if (previousTimeoutId) {
+        clearTimeout(previousTimeoutId);
+      }
+      
+      const timeoutId = setTimeout(() => {
+        addedMsg.classList.remove('js-added-to-cart-opacity');
+      },2000);
+      addedMsgTimeouts[productId] = timeoutId;
     });
   });

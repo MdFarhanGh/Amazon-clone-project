@@ -143,6 +143,10 @@
      opacity and make it visible. */
   opacity: 0;
 }
+/* Displaying added-to-cart-msg once we click the add to cart */
+.js-added-to-cart-opacity {
+  opacity: 1;
+}
 
 .added-to-cart img {
   height: 20px;
