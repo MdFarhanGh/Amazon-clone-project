@@ -1,5 +1,6 @@
 // Importing files
 import { cart } from "../data/cart.js";
+import { products } from "../data/products.js";
 
 // Saving The Data. (Getting products Array from products.js)
 
