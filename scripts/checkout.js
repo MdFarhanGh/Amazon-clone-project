@@ -1,6 +1,8 @@
-import { cart, removeFromCart } from "../data/cart.js";
+import { cart, removeFromCart, calclulateCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
+
+updateCartQuantity();
 
 let cartSummaryHTML = '';
 
@@ -97,6 +99,7 @@ cart.forEach((cartItem) => {
       </div>
     </div>
   `;
+  updateCartQuantity();
 });
 
 // Displaying the generated HTML on the page.
@@ -112,5 +115,13 @@ document.querySelectorAll('.js-delete-link')
 
       const itemContainer = document.querySelector(`.js-cart-item-container-${productId}`);
       itemContainer.remove();
+      updateCartQuantity();
     })
   });
+
+// function to save the cart quantity in middle header section
+function updateCartQuantity() {
+  let cartQuantity = calclulateCartQuantity();
+  document.querySelector('.js-return-to-home-link')
+    .innerHTML = `${cartQuantity} Items`;
+}

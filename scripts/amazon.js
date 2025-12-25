@@ -1,5 +1,5 @@
 // Importing files
-import { cart, addToCart } from "../data/cart.js";
+import { cart, addToCart, calclulateCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
@@ -60,7 +60,6 @@ products.forEach((product) => {
       </button>
     </div>
   `;
-  updateCartQuantity();
 });
 
 // Displaying the generated html on the page.
@@ -73,13 +72,11 @@ document.querySelector('.js-product-grid')
 // calculating the total quantity in the cart and displaying it on header top-right.
 function updateCartQuantity() {
 
-  let cartQuantity = 0;
-  cart.forEach((cartItem) => {
-    cartQuantity += cartItem.quantity;
-  });
+  let cartQuantity = calclulateCartQuantity();
   document.querySelector('.js-cart-quantity')
     .innerHTML = cartQuantity;
 }
+updateCartQuantity();
 
 // Creating setTimeout object outside. coz to store id for multiple products.
 const addedMsgTimeouts = {};

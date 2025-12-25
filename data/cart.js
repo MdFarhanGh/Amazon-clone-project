@@ -52,3 +52,12 @@ export function removeFromCart(productId) {
   cart = newCart
   saveToStorage();
 }
+
+// Ex14.e: calculating the cart quantity and using it in amazon.js and checkout.js files.
+export function calclulateCartQuantity() {
+  let cartQuantity = 0;
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
+  return cartQuantity;
+}
