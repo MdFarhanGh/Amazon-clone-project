@@ -6,7 +6,7 @@
   <title>Modules</title>
 </head>
 <body>
-  <!-- When we use script tags normally, it can caues naming conflicts which means once the variable has been created in any file, it cannot be used in any other file. Ex: cart and product variable.
+  <!-- When we use script tags normally, it can cause naming conflicts which means once the variable has been created in any file, it cannot be used in any other file. Ex: cart and product variable.
   So to solve this we use modules.
   A module contains a variable inside a file so this variable will not cause conflicts with other variables in other file with the same name.Creating a Module...
   1. Create a file
@@ -21,6 +21,10 @@
   2. We need to use Live server. 
   Benefits of module.
   1. helps us avoid any naming conflict. (Still when using import, do not create the same variable again).
-  2. We dont have to worry about the order of the file. -->
+  2. We dont have to worry about the order of the file. 
+  
+  Notice that in cart.js we are not storing img, price, name of the product. We are just storing the productId and quantity. 
+  So we can use this productId of each individual product to search in the product.js file and can get all the data that we need for the product. So there is no need to store the whole data in cart.js file once again.
+  This is called Deduplicating data, or Normalizing the data. -->
 </body>
 </html>

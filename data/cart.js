@@ -14,13 +14,11 @@ function saveToStorage() {
 
 // Checking if the product is already in the cart.
 export function addToCart(productId) {
-
   // Getting the Quantity Selector
   const quantity = document.querySelector(`.js-quantity-selector-${productId}`);
   const quantityValue = Number(quantity.value);
 
   let matchingItem;
-
   cart.forEach((cartItem) => {
     if (productId === cartItem.productId) {
       matchingItem = cartItem;
@@ -36,7 +34,6 @@ export function addToCart(productId) {
       quantity: quantityValue
     });
   } 
-
   saveToStorage();
 }
 
@@ -53,6 +50,5 @@ export function removeFromCart(productId) {
     }
   });
   cart = newCart
-
   saveToStorage();
 }

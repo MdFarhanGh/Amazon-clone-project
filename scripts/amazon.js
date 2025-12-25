@@ -8,7 +8,6 @@ import { formatCurrency } from "./utils/money.js";
 // GENERATING THE HTML
 // Storing all the generated HTML in this var and displaying it on page.
 let productsHTML = '';
-
 products.forEach((product) => {
   productsHTML += `
     <div class="product-container">
@@ -61,9 +60,10 @@ products.forEach((product) => {
       </button>
     </div>
   `;
+  updateCartQuantity();
 });
 
-// Putting the generated html on the page.
+// Displaying the generated html on the page.
 document.querySelector('.js-product-grid')
   .innerHTML = productsHTML;
 

@@ -4,7 +4,7 @@ import { formatCurrency } from "./utils/money.js";
 
 let cartSummaryHTML = '';
 
-// Generating and displaying the products at checkout.html.
+// Looping and Generating the products at checkout.html.
 cart.forEach((cartItem) => {
 
   // Getting the productId so that we can get other values like image, name and price of each product.
@@ -99,6 +99,7 @@ cart.forEach((cartItem) => {
   `;
 });
 
+// Displaying the generated HTML on the page.
 document.querySelector('.js-order-summary')
   .innerHTML = cartSummaryHTML;
 
