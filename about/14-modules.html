@@ -6,7 +6,15 @@
   <title>Modules</title>
 </head>
 <body>
-  <!-- When we use script tags normally, it can cause naming conflicts which means once the variable has been created in any file, it cannot be used in any other file. Ex: cart and product variable.
+  <!-- 
+  In this lesson:
+  1. Modules = better way to organize our code.
+  2. Created the checkout page.
+  3. HTML link elements and radio selectors
+  4. Made the delete link interactive
+  5. Saved the cart in localStorage.
+
+  When we use script tags normally, it can cause naming conflicts which means once the variable has been created in any file, it cannot be used in any other file. Ex: cart and product variable.
   So to solve this we use modules.
   A module contains a variable inside a file so this variable will not cause conflicts with other variables in other file with the same name.Creating a Module...
   1. Create a file
@@ -25,6 +33,14 @@
   
   Notice that in cart.js we are not storing img, price, name of the product. We are just storing the productId and quantity. 
   So we can use this productId of each individual product to search in the product.js file and can get all the data that we need for the product. So there is no need to store the whole data in cart.js file once again.
-  This is called Deduplicating data, or Normalizing the data. -->
+  This is called Deduplicating data, or Normalizing the data. 
+  
+  When we click "Delete" on the checkout page to delete an item, we can get the details of the item using the productId with the data attribute and remove the item from the cart.
+  But, how do we update the html and remove the item from the webpage?
+  To do so,
+  1. Get the container in which the item is stored i.e, cart-item-container.
+  2. Js has a method called .remove() which will help us remove the item from the page.
+  3. Give this container a unique class using ${matchingProduct.id}
+  4. Now when we click the delete button, we can get the container and use .remove() to delete that container and the update the HTML. -->
 </body>
 </html>
