@@ -61,3 +61,26 @@ export function calclulateCartQuantity() {
   });
   return cartQuantity;
 }
+
+// Updating the cart quantity using the "Update" & "Save" button.
+export function updateQuantity(productId, newQuantity) {
+  cart.forEach((cartItem) => {
+    if (cartItem.productId === productId) {
+      if (newQuantity <=0 || newQuantity >10) {
+        ifInvalidInput(productId);
+      }
+      else {
+        cartItem.quantity = newQuantity;
+      }
+    }
+  });
+  saveToStorage();
+}
+
+export function ifInvalidInput(productId) {
+  const invalidInput = document.querySelector(`.js-invalid-input-${productId}`)
+  invalidInput.innerHTML = 'Enter quantity between 1 & 10';
+  setTimeout(() => {
+    invalidInput.innerHTML = '';
+  }, 2500)
+}
