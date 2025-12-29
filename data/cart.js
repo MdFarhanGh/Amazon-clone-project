@@ -56,6 +56,23 @@ export function removeFromCart(productId) {
   saveToStorage();
 }
 
+/* Updating the delivery option on page when we select any delivery option.
+1. Loop through the cart and find the product
+2. Update the deliveryOptionId of that product */
+export function updateDeliveryOption(productId, deliveryOptionId) {
+
+  let matchingItem;
+  cart.forEach((cartItem) => {
+    if (productId === cartItem.productId) {
+      matchingItem = cartItem;
+    }
+    if (matchingItem) {
+      matchingItem.deliveryOptionId = deliveryOptionId;
+   }
+    saveToStorage();
+  });
+}
+
 // Ex14.e: calculating the cart quantity and using it in amazon.js and checkout.js files.
 export function calclulateCartQuantity() {
   let cartQuantity = 0;
