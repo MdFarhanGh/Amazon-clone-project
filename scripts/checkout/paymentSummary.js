@@ -12,11 +12,11 @@ export function renderPaymentSummary() {
   // Cost to all items:
   let prooductPriceCents = 0;
   let shippingPriceCents = 0;
-
+  let totalQuantity = 0
   cart.forEach((cartItem) => {
     const product = getProduct(cartItem.productId);
     prooductPriceCents += product.priceCents * cartItem.quantity;
-    
+    totalQuantity += cartItem.quantity;
     /*Cost of shipping: 
     1. loop through the cart 
     2. Add all the shipping costs together */
@@ -35,7 +35,7 @@ export function renderPaymentSummary() {
     </div>
 
     <div class="payment-summary-row">
-      <div>Items (3):</div>
+      <div>Items (${totalQuantity}):</div>
       <div class="payment-summary-money">
         $${formatCurrency(prooductPriceCents)}
       </div>

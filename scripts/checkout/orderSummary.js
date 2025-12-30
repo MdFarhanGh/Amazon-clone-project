@@ -2,7 +2,7 @@ import { cart, removeFromCart, calclulateCartQuantity, updateQuantity, ifInvalid
 import { products, getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
-import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
+import { deliveryOptions, getDeliveryOption, calculateDeliveryDate } from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
 
 // Putting all the code that we wrote inside this function and then running this function to regenerate the whole data. (Model-View-Controller)
@@ -22,9 +22,8 @@ export function renderOrderSummary() {
     // Displaying delivery Date for each cart-item-container.
     const deliveryOptionId = cartItem.deliveryOptionId;
     const deliveryOption = getDeliveryOption(deliveryOptionId);
-    const today = dayjs();
-    const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
-    const dateString = deliveryDate.format('dddd, MMMM D');
+
+    const dateString = calculateDeliveryDate(deliveryOption);
     cartSummaryHTML +=
     `
       <div class="cart-item-container 
@@ -82,9 +81,8 @@ export function renderOrderSummary() {
   function deliveryOptionsHTML(matchingProduct, cartItem) {
     let html = '';
     deliveryOptions.forEach((deliveryOption) => {
-      const today = dayjs();
-      const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
-      const dateString = deliveryDate.format('dddd, MMMM D');
+      
+      const dateString = calculateDeliveryDate(deliveryOption);
       const priceString = deliveryOption.priceCents === 0
         ? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)} -`;
 
@@ -185,6 +183,8 @@ export function renderOrderSummary() {
 
         updateCartQuantity();
         quantityInput.value = ''; //Reset the input box to empty again,
+        renderOrderSummary();
+        renderPaymentSummary();
       });
     });
 }
