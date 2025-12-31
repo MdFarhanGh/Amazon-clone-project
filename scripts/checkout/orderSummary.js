@@ -1,7 +1,6 @@
-import { cart, removeFromCart, calclulateCartQuantity, updateQuantity, ifInvalidInput, updateDeliveryOption } from "../../data/cart.js";
+import { cart, removeFromCart, calclulateCartQuantity, updateQuantity, updateDeliveryOption } from "../../data/cart.js";
 import { products, getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
-import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import { deliveryOptions, getDeliveryOption, calculateDeliveryDate } from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
 
@@ -173,13 +172,9 @@ export function renderOrderSummary() {
         updateQuantity(productId, newQuantity);
 
         // Updating quantity in quantity beside and in middle header section.
-        if (newQuantity <= 0 || newQuantity > 10) {
-          ifInvalidInput(productId);
-        }
-        else {
-          const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
-          quantityLabel.innerHTML = newQuantity;
-        }
+        const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
+        quantityLabel.innerHTML = newQuantity;
+        
 
         updateCartQuantity();
         quantityInput.value = ''; //Reset the input box to empty again,
