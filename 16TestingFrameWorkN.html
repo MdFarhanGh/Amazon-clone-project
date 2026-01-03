@@ -25,7 +25,14 @@
     Splits our code into 3 parts.
     1. model = saves and manages the data (cart.js)
     2. view = takes the data and displays it on the page. (renderOrderSummary())
-    3. controller = runs some code when we interact with the page. (eventListeners in renderOrderSummary()). */
+    3. controller = runs some code when we interact with the page. (eventListeners in renderOrderSummary()).
+    
+    NOTE: while mocking a function, the order of the code matters.
+    and a mock only lasts for 1 test.
+    Mock: Create a fake version of the code in testing
+    spyOn().and.callFake(() => {
+
+    }); */
   </script>
 </body>
 </html>
