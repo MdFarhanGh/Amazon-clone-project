@@ -27,12 +27,20 @@
     2. view = takes the data and displays it on the page. (renderOrderSummary())
     3. controller = runs some code when we interact with the page. (eventListeners in renderOrderSummary()).
     
+    Mock: Create a fake version of the code in testing
     NOTE: while mocking a function, the order of the code matters.
     and a mock only lasts for 1 test.
-    Mock: Create a fake version of the code in testing
     spyOn().and.callFake(() => {
 
-    }); */
+    Integration test: Tests many units/piecies of code working together.
+    }); 
+    
+    HOOKS: Lets us run some code for each test
+    EX: beforeEach(function): runs code before "each" test.
+    afterEach(): runs code after "each" test.
+    beforeAll(): runs code before "all" test.
+    afterAll(): runs code after "all" test.
+    */
   </script>
 </body>
 </html>
