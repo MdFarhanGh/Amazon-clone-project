@@ -1,16 +1,17 @@
 class Cart {
   cartItems;
-  localStorageKey;
+  // '#' means localStorageKey is private
+  #localStorageKey;
 
   // works like normal method(function)
   // Special thing about this is, when we generate this object, it will run this code automatically.
   constructor(localStorageKey) {
-    this.localStorageKey = localStorageKey;
-    this.loadFromStorage();
+    this.#localStorageKey = localStorageKey;
+    this.#loadFromStorage();
   }
 
-  loadFromStorage() {
-    this.cartItems =JSON.parse(localStorage.getItem(this.localStorageKey)) ||
+  #loadFromStorage() {
+    this.cartItems =JSON.parse(localStorage.getItem(this.#localStorageKey)) ||
     [{
       productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
       quantity: 2,
@@ -24,7 +25,7 @@ class Cart {
 
   // function to store the cart in localStorage.
   saveToStorage() {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+    localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
   }
 
   // Checking if the product is already in the cart.
