@@ -7,14 +7,24 @@ import { loadCart } from "../data/cart.js";
 // import '../data/backend-practice.js';
 
 async function loadPage() {
+  try {
+    // throw 'error1';
 
-  await loadProductsFetch();
+    await loadProductsFetch();
 
-  const value = await new Promise((resolve) => {
-    loadCart(() => {
-      resolve('value2');
+    const value = await new Promise((resolve, reject) => {
+      // throw 'error 2';
+      loadCart(() => {
+        // reject('error 3');
+        resolve('value2');
+      });
     });
-  });
+  }
+
+  catch (error) {
+    console.log("An ERROR Occured: Try again later");
+    console.log(error);
+  }
 
   renderCheckoutHeader();
   renderOrderSummary();
