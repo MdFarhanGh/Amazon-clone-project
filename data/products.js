@@ -93,7 +93,7 @@ export function loadProductsFetch() {
       }
       return new Product(productDetails);
     });
-    console.log('Load Products');
+    // console.log('Load Products');
   }).catch((err) => {
     console.log('ERROR: try again later.');
     console.log(err);
@@ -117,7 +117,7 @@ export function loadProducts(fun) {
       }
       return new Product(productDetails);
     });
-    console.log('Load Products');
+    // console.log('Load Products');
     fun();
   });
 

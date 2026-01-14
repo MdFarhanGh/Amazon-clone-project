@@ -79,6 +79,8 @@ export function renderPaymentSummary() {
   document.querySelector('.js-payment-summary') 
   .innerHTML = paymentSummaryHTML;
 
+  // Making "Place your order" btn interactive.
+    // When we click this button, make a request to the backend to create the order.
   document.querySelector('.js-place-order')
     .addEventListener('click', async () => {
       try {
@@ -92,6 +94,7 @@ export function renderPaymentSummary() {
           })
         });
         const order = await response.json();
+        // console.log(order);
         addOrder(order);
       }
       catch(error) {
