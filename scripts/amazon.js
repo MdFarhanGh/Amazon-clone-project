@@ -1,7 +1,6 @@
 // Importing files
 import { cart, addToCart, calclulateCartQuantity } from "../data/cart.js";
 import { products, loadProducts } from "../data/products.js";
-import { formatCurrency } from "./utils/money.js";
 
 loadProducts(renderProductsGrid);
 
@@ -12,7 +11,20 @@ function renderProductsGrid() {
   // GENERATING THE HTML
   // Storing all the generated HTML in this var and displaying it on page.
   let productsHTML = '';
-  products.forEach((product) => {
+
+
+  const url = new URL(window.location.href);
+  let search = url.searchParams.get('search');
+  let filteredProducts = products;
+
+  if (search) {
+    search = search.toLowerCase();
+    filteredProducts = products.filter((product) => {
+      return product.name.toLowerCase().includes(search) || product.keywords.includes(search);
+    });
+  }
+
+  filteredProducts.forEach((product) => {
     productsHTML += `
       <div class="product-container">
         <div class="product-image-container">
@@ -116,4 +128,10 @@ function renderProductsGrid() {
         displayAddedMsg(productId);
       });
     });
+
+    document.querySelector('.js-search-button')
+      .addEventListener('click', () => {
+        const search = document.querySelector('.js-search-bar').value;
+        window.location.href = `amazon.html?search=${search}`;
+      });
 }
